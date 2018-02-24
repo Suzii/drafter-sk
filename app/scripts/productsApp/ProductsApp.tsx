@@ -84,18 +84,20 @@ export class ProductsApp extends React.PureComponent<{}, IState> {
   render() {
     return (
       <div className="products">
-        <h1>Produkty</h1>
+        <h1 className="products__title">Produkty</h1>
 
-        <Filters
-          filter={this.state.filter}
-          taxonomyGroups={this.state.taxonomyGroups}
-          onFilterQueryChange={this.onFilterQueryChange}
-          onTaxonomyTermSelected={this.onTermSelected}
-          onTaxonomyTermUnselected={this.onTermUnselected}
-          onClearFilter={this.onClearFilter}
-        />
+        <div className="products__wrapper">
+          <Filters
+            filter={this.state.filter}
+            taxonomyGroups={this.state.taxonomyGroups}
+            onFilterQueryChange={this.onFilterQueryChange}
+            onTaxonomyTermSelected={this.onTermSelected}
+            onTaxonomyTermUnselected={this.onTermUnselected}
+            onClearFilter={this.onClearFilter}
+          />
 
-        <ProductsListing products={getFilteredProducts(this.state.allProducts, this.state.filter)} />
+          <ProductsListing products={getFilteredProducts(this.state.allProducts, this.state.filter)} />
+        </div>
       </div>
     );
   }

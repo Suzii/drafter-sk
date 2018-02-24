@@ -7,28 +7,31 @@ interface IProps {
   product: Product;
 }
 
-const RenderTaxonomy: React.SFC<{field: TaxonomyField}> = ({field}) => (
-  <p className="products__item--property">
-    <b className="products__item--property-name">
-      {field.name}&nbsp;
-    </b>
-    <span className="products__item--property-values">
-      {field.value.map(({name}) => name).join(', ')}
-    </span>
-  </p>
+const RenderTaxonomy: React.SFC<{ field: TaxonomyField }> = ({ field }) => (
+  <React.Fragment>
+    <dt>
+      {field.name}
+    </dt>
+    <dd>
+      {field.value.map(({ name }) => name).join(', ')}
+    </dd>
+  </React.Fragment>
 );
 
 export const ProductPreview: React.SFC<IProps> = ({ product }) => (
-  <div className="products__item">
-    <h3 className="products__item--title">{product.nazov.text}</h3>
-    {product.foto.assets && product.foto.assets.length &&
-      <img className="products__item--image" src={product.foto.assets[0].url}/>
-    }
+  <div className="item">
+    <div className="item__image">
+      <img src={product.foto.assets[0].url} />
+    </div>
 
-    <p className="products__item--description">{product.popis.text}</p>
-    <RenderTaxonomy field={product.krajinaPovodu}/>
-    <RenderTaxonomy field={product.vyrobca}/>
-    <RenderTaxonomy field={product.kategoria}/>
+    <div className="item__info">
+      <h3 className="item__title">{product.nazov.text}</h3>
+      <div className="item__description">{product.popis.text}</div>
+      <dl className="item__properties inline-flex">
+        <RenderTaxonomy field={product.vyrobca} />
+        <RenderTaxonomy field={product.krajinaPovodu} />
+      </dl>
+    </div>
   </div>
 );
 

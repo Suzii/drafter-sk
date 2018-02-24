@@ -76,6 +76,7 @@
     "babel-preset-react": "^6.24.1",
     "kentico-cloud-delivery-typescript-sdk": "^2.5.2",
     "memoizee": "^0.4.12",
+    "normalize.css": "^8.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   }

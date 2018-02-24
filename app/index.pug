@@ -6,12 +6,13 @@ html(lang="en")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     title Drafter
   body
-    include includes/header.pug
-    include includes/hero.pug
-    include includes/intro.pug
-    include includes/contacts.pug
+    include includes/nav
+    main
+      include includes/hero
+      include includes/intro
+      include includes/contacts
 
-    section#produkty
-      #products-app
+      section#produkty
+        #products-app
 
-    include includes/footer.pug
+    include includes/footer

@@ -1,0 +1,64 @@
+.products {
+  background-color: @light-gray;
+}
+
+.products__title {
+}
+
+.products__wrapper {
+  display: flex;
+}
+
+.products__filters {
+  display: flex;
+  flex-direction: column;
+  background-color: @primary-color;
+  padding: 1rem;
+
+  .filter__group {
+
+  }
+
+  .filter__group--title {
+    font-weight: bolder;
+  }
+
+  .filter__group--terms {
+
+  }
+}
+
+.products__items {
+  display: flex;
+  flex-wrap: wrap;
+
+  .item {
+    background-color: @white;
+    border: solid 1px @lighter-gray;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    flex: 1 30%;
+  }
+
+  // TODO set widths for different screen sizes
+  //@media (max-width: 920px) {
+  //  .item {
+  //    flex: 1 21%;
+  //  }
+  //}
+
+  .item__image {
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .item__info {
+    margin-top: auto;
+
+    dt {
+      font-weight: bolder;
+    }
+  }
+}

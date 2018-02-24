@@ -1,0 +1,27 @@
+.responsive-invisibility() {
+  display: none !important;
+}
+
+.hidden-xs {
+  @media (max-width: @screen-sm+1) {
+    .responsive-invisibility();
+  }
+}
+
+.hidden-sm {
+  @media (max-width: @screen-md+1) {
+    .responsive-invisibility();
+  }
+}
+
+.hidden-md {
+  @media (max-width: @screen-lg+1) {
+    .responsive-invisibility();
+  }
+}
+
+.hidden-lg {
+  @media (min-width: @screen-lg) {
+    .responsive-invisibility();
+  }
+}

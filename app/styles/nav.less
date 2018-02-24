@@ -1,0 +1,41 @@
+.nav {
+  width: 100%;
+  background-color: @primary-color;
+  padding: 0;
+}
+
+ul.nav__links {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  margin-right: 2rem;
+  justify-items: center;
+  align-items: center;
+  height: 3rem;
+
+  li {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    text-transform: uppercase;
+    font-weight: bolder;
+
+    a {
+      color: @secondary-color;
+
+      &:hover {
+        color: @black;
+        box-shadow: @black;
+        text-decoration: none;
+      }
+    }
+
+    .active {
+      border-bottom: 0.2rem solid @secondary-color;
+    }
+  }
+
+  .nav__link--logo {
+    margin-right: auto;
+  }
+}

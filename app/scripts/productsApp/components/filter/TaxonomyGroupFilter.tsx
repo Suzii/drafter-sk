@@ -10,8 +10,8 @@ interface IProps {
 
 export const TaxonomyGroupFilter: React.SFC<IProps> = (props) => (
   <div className="filter__group">
-    <div className="filter__group--tile">
-      <b>{props.taxonomyGroup.system.name}</b>
+    <div className="filter__group--title">
+      {props.taxonomyGroup.system.name}
     </div>
     <ul className="filter__group--terms">
       {props.taxonomyGroup.terms.map(term =>

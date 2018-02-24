@@ -14,19 +14,23 @@ interface IProps {
 
 export const Filters: React.SFC<IProps> = (props) => (
   <div className="products__filters">
-    <button
-      type="reset"
-      className="btn btn-default"
-      onClick={props.onClearFilter}
-    >
-      Resetovať filter
-    </button>
+    <div className="filter__search">
+      <input
+        value={props.filter.query}
+        placeholder="Hľadať..."
+        onChange={(e) => props.onFilterQueryChange(e.target.value)}
+      />
+    </div>
 
-    <input
-      value={props.filter.query}
-      placeholder="Hľadať..."
-      onChange={(e) => props.onFilterQueryChange(e.target.value)}
-    />
+    <div className="filter__reset">
+      <button
+        type="reset"
+        className="btn btn-default"
+        onClick={props.onClearFilter}
+      >
+        Resetovať filter
+      </button>
+    </div>
 
     {props.taxonomyGroups.map(group =>
       <TaxonomyGroupFilter
