@@ -32,12 +32,12 @@ const PATHS = {
 
 const lintStylesOptions = {
   context: path.resolve(__dirname, `${PATHS.app}/styles`),
-  syntax: 'scss',
+  syntax: 'less',
   emitErrors: false
   // fix: true,
 };
 
-const cssPreprocessorLoader = { loader: 'fast-sass-loader' };
+const cssPreprocessorLoader = { loader: 'less-loader' };
 
 const commonConfig = merge([
   {
@@ -107,13 +107,6 @@ const productionConfig = merge([
       cacheDirectory: true,
       presets: [
           "react",
-          [
-            "es2015",
-            {
-              "modules": false
-            }
-          ],
-          "es2016"
         ]
       }
   }),
@@ -140,7 +133,7 @@ const productionConfig = merge([
   }),
   parts.purifyCSS({
     paths: glob.sync(`${PATHS.app}/**/*.+(pug|js)`, { nodir: true }),
-    styleExtensions: ['.css', '.scss']
+    styleExtensions: ['.css', '.less']
   }),
   parts.minifyCSS({
     options: {
