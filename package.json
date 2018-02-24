@@ -69,10 +69,13 @@
     "webpack-merge": "^4.1.1"
   },
   "dependencies": {
+    "@types/memoizee": "^0.4.2",
     "@types/node": "^9.4.6",
     "@types/react": "^16.0.38",
     "@types/react-dom": "^16.0.4",
     "babel-preset-react": "^6.24.1",
+    "kentico-cloud-delivery-typescript-sdk": "^2.5.2",
+    "memoizee": "^0.4.12",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   }
