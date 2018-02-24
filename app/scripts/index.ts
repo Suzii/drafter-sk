@@ -1,10 +1,9 @@
 import '../styles/main.less'
-import './App.tsx';
+import './reactAppsBootstrapper.tsx';
 
 if (process.env.NODE_ENV !== 'production') {
   require('./../index.pug')
 }
 
-console.log('JavaScript loaded!');
-
+// Other hacks on page
 document.getElementById('footer__copyright--year').innerText = new Date().getFullYear().toString();
