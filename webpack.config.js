@@ -46,7 +46,7 @@ const commonConfig = merge([
       unsafeCache: true,
       symlinks: false
     },
-    entry: `${PATHS.app}/scripts`,
+    entry: `${PATHS.app}/scripts/index.ts`,
     output: {
       path: PATHS.build,
       publicPath: parts.publicPath
@@ -63,7 +63,16 @@ const commonConfig = merge([
     }
   },
   parts.loadPug(),
-  parts.lintJS({ include: PATHS.app, options: lintJSOptions }),
+  parts.loadJS({
+    include: PATHS.app,
+    exclude: /node_modules/,
+    options: {
+      cacheDirectory: true,
+      presets: [
+        "react",
+      ]
+    }
+  }),
   parts.loadFonts({
     include: PATHS.app,
     options: {
@@ -93,9 +102,20 @@ const productionConfig = merge([
   parts.minifyJS(),
   parts.loadJS({
     include: PATHS.app,
+    exclude: /node_modules/,
     options: {
-      cacheDirectory: true
-    }
+      cacheDirectory: true,
+      presets: [
+          "react",
+          [
+            "es2015",
+            {
+              "modules": false
+            }
+          ],
+          "es2016"
+        ]
+      }
   }),
   parts.extractBundles([
     {

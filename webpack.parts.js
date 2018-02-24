@@ -238,19 +238,34 @@ exports.loadFonts = ({ include, exclude, options } = {}) => ({
 });
 
 exports.loadJS = ({ include, exclude, options } = {}) => ({
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx']
+  },
   module: {
-    rules: [
-      {
-        test: /\.js$/,
-
-        include,
-        exclude,
-
-        loader: 'babel-loader',
-        options
-      }
-    ]
-  }
+    rules: [{
+      test: /\.ts(x?)$/,
+      include,
+      exclude,
+      use: [
+        {
+          loader: 'babel-loader',
+          options,
+        },
+        {
+          loader: 'ts-loader'
+        }
+      ]
+    }, {
+      test: /\.js$/,
+      exclude: /node_modules/,
+      use: [
+        {
+          loader: 'babel-loader',
+          options,
+        }
+      ]
+    }]
+  },
 });
 
 exports.minifyJS = () => ({
