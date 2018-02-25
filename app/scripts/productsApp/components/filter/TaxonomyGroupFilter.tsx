@@ -8,24 +8,49 @@ interface IProps {
   onTermUnselected: (termCodename: string) => void;
 }
 
-export const TaxonomyGroupFilter: React.SFC<IProps> = (props) => (
-  <div className="filter__group">
-    <div className="filter__group--title">
-      {props.taxonomyGroup.system.name}
-    </div>
-    <ul className="filter__group--terms">
-      {props.taxonomyGroup.terms.map(term =>
-        <TaxonomyTerm
-          key={term.codename}
-          term={term}
-          selected={props.selected}
-          onTermSelected={props.onTermSelected}
-          onTermUnselected={props.onTermUnselected}
-        />
-      )}
-    </ul>
-  </div>
-);
+interface IState {
+  isCollapsed: boolean
+}
+
+export class TaxonomyGroupFilter extends React.PureComponent<IProps, IState> {
+  constructor(props) {
+    super(props);
+
+    this.state = { isCollapsed: false }
+  }
+
+  toggleCollapsed = () => {
+    this.setState((prevState) => ({ isCollapsed: !prevState.isCollapsed }));
+  };
+
+  render() {
+    const iconClass = this.state.isCollapsed
+      ? 'fa fa-angle-down'
+      : 'fa fa-angle-up';
+
+    return (
+      <div className="filter__group">
+        <div className="filter__group--title" onClick={this.toggleCollapsed}>
+          <i className={iconClass} />&nbsp;
+          {this.props.taxonomyGroup.system.name}
+        </div>
+        {!this.state.isCollapsed &&
+        <ul className="filter__group--terms">
+          {this.props.taxonomyGroup.terms.map(term =>
+            <TaxonomyTerm
+              key={term.codename}
+              term={term}
+              selected={this.props.selected}
+              onTermSelected={this.props.onTermSelected}
+              onTermUnselected={this.props.onTermUnselected}
+            />
+          )}
+        </ul>
+        }
+      </div>
+    );
+  }
+}
 
 interface ITermProps {
   term: TaxonomyTerms;
@@ -42,14 +67,15 @@ const TaxonomyTerm: React.SFC<ITermProps> = (props) => {
   return (
     <React.Fragment>
       <li className="filter__term--node">
-        <label key={codename}>
-          <input
-            type="checkbox"
-            id={codename}
-            name={codename}
-            checked={isSelected}
-            onChange={onChange}
-          />
+        <input
+          type="checkbox"
+          className="fancy-checkbox"
+          id={codename}
+          name={codename}
+          checked={isSelected}
+          onChange={onChange}
+        />
+        <label key={codename} htmlFor={codename}>
           {name}
         </label>
       </li>

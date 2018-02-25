@@ -8,7 +8,7 @@ interface IProps {
 
 export const ProductsListing: React.SFC<IProps> = ({ products }) => {
   return (
-    <div className="products__items">
+    <div className="row products__items">
       {products && products.length
         ? products.map((product: Product) =>
           <ProductPreview key={product.system.codename} product={product} />)

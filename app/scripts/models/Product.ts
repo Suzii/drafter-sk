@@ -10,18 +10,13 @@ export class Product extends ContentItem {
     public hmotnost: Fields.TextField;
     public vyrobca: Fields.TaxonomyField;
     public kategoria: Fields.TaxonomyField;
-    public krajinaPovodu: Fields.TaxonomyField;
+    public krajina: Fields.TaxonomyField;
     public popis: Fields.TextField;
     public foto: Fields.AssetsField;
 
     constructor(){
         super({
             propertyResolver: ((fieldName: string) => {
-
-                if (fieldName === 'krajina_povodu'){
-                    return 'krajinaPovodu';
-                }
-
                 return fieldName;
             })
         })

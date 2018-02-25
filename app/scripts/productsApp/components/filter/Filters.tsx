@@ -24,13 +24,12 @@ export const Filters: React.SFC<IProps> = (props) => (
     </div>
 
     <div className="filter__reset">
-      <button
-        type="reset"
-        className="btn btn-default"
+      <div
+        className="reset-button"
         onClick={props.onClearFilter}
       >
-        Resetovať filter
-      </button>
+        Zrušiť filter
+      </div>
     </div>
 
     {props.taxonomyGroups.map(group =>

@@ -91,7 +91,7 @@ export class ProductsApp extends React.PureComponent<{}, IState> {
         </div>
 
         <div className="row section__content">
-          <div className="col-md-3">
+          <div className="col-xs-12 col-sm-3">
             <Filters
               filter={this.state.filter}
               taxonomyGroups={this.state.taxonomyGroups}
@@ -102,7 +102,7 @@ export class ProductsApp extends React.PureComponent<{}, IState> {
             />
           </div>
 
-          <div className="col-md-9">
+          <div className="col-xs-12 col-sm-9">
             <ProductsListing products={getFilteredProducts(this.state.allProducts, this.state.filter)} />
           </div>
         </div>
