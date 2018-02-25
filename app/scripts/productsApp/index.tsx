@@ -5,5 +5,5 @@ import { ProductsApp } from './ProductsApp';
 console.info('Bootstrapping Products app');
 ReactDOM.render(
   <ProductsApp/>,
-  document.getElementById('products-app')
+  document.getElementById('produkty')
 );

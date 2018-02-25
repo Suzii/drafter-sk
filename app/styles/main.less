@@ -1,52 +1,16 @@
 @import "~normalize.css";
+@import "~flexboxgrid";
 
 @import 'fonts.less';
 @import 'variables.less';
 @import 'responsive-utils.less';
-@import 'nav.less';
-@import 'footer.less';
-@import 'hero.less';
-@import 'section.less';
-@import 'contact.less';
-@import 'products.less';
 
-body {
-  font-family: 'Open Sans', sans-serif;
-  color: @secondary-color;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
+@import 'layout.less';
+@import 'typography.less';
 
-a {
-  color: @primary-color;
-  text-decoration: none;
+@import 'sections/nav.less';
+@import 'sections/footer.less';
+@import 'sections/hero.less';
+@import 'sections/contact.less';
+@import 'sections/products.less';
 
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-dl.inline-flex {
-  display: flex;
-  flex-flow: row;
-  flex-wrap: wrap;
-  width: 100%;
-  overflow: visible;
-
-  dt {
-    flex: 0 0 50%;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
-
-  dd {
-    flex: 0 0 50%;
-    margin-left: auto;
-    text-align: left;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
-}

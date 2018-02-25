@@ -17,6 +17,7 @@ export const Filters: React.SFC<IProps> = (props) => (
     <div className="filter__search">
       <input
         value={props.filter.query}
+        type="text"
         placeholder="Hľadať..."
         onChange={(e) => props.onFilterQueryChange(e.target.value)}
       />

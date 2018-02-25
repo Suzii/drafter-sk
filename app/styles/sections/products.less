@@ -1,13 +1,13 @@
-.products {
-  background-color: @light-gray;
-}
-
-.products__title {
-}
-
-.products__wrapper {
-  display: flex;
-}
+//.products {
+//  background-color: @light-gray;
+//}
+//
+//.products__title {
+//}
+//
+//.products__wrapper {
+//  display: flex;
+//}
 
 .products__filters {
   display: flex;
@@ -24,13 +24,27 @@
   }
 
   .filter__group--terms {
+    padding-left: 0;
 
+    .filter__term--node {
+      text-overflow: ellipsis;
+    }
+
+    .filter__term--children {
+
+    }
+  }
+
+  ul {
+    list-style: none;
   }
 }
 
 .products__items {
   display: flex;
   flex-wrap: wrap;
+  //align-items: flex-start;
+  //align-content: flex-start;
 
   .item {
     background-color: @white;

@@ -7,12 +7,45 @@ html(lang="en")
     title Drafter
   body
     include includes/nav
-    main
-      include includes/hero
-      include includes/intro
-      include includes/contacts
+    main.main
+      header#intro.hero
+        .hero__text
+          h1 Drafter
+          h4 Čerstvé produkty od výrobcov až na vaše pulty
+          a(href='#produkty').button Sortiment
 
-      section#produkty
-        #products-app
 
-    include includes/footer
+      section#kto-sme.section.section
+        .container
+          .row.section__title
+            .col-xs-12
+              h1 O nás
+          .row.section__content.center-md
+            .col-xs-12.col-md-9
+              | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+      section#produkty.section.section--gray
+
+      section#kontakty.section
+        .container
+          .row.section__title
+            .col-xs-12
+                h1 Kontakty
+          .row.section__content.center-sm
+            .col-xs-12.col-sm-6
+              div
+                p www.drafter.sk
+                p dankovcik@drafter.sk
+                p +412 907 122 336
+            .col-xs-12.col-sm-6
+              div
+                p Príles 604/40
+                p Trenčianska Teplá
+                p 914&nbsp;01
+                p Slovensko
+
+                p ICO: 123131231
+                p DIC: 454353453453
+
+
+  include includes/footer
