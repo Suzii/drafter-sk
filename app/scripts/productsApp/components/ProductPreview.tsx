@@ -19,7 +19,7 @@ const RenderTaxonomy: React.SFC<{ field: TaxonomyField }> = ({ field }) => (
 );
 
 export const ProductPreview: React.SFC<IProps> = ({ product }) => (
-  <div className="item__wrapper col-md-3 col-sm-4 col-xs-6">
+  <div className="item__wrapper col-lg-3 col-md-4 col-sm-4 col-xs-6 col-xxs-12">
     <div className="item">
       <div className="item__image">
         <img src={product.foto.assets[0].url} />

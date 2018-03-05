@@ -83,7 +83,7 @@ export class ProductsApp extends React.PureComponent<{}, IState> {
 
   render() {
     return (
-      <div className="container">
+      <div className="container-fluid">
         <div className="row section__title">
           <div className="col-sm-12">
             <h1 className="">Produkty</h1>
@@ -91,7 +91,7 @@ export class ProductsApp extends React.PureComponent<{}, IState> {
         </div>
 
         <div className="row section__content">
-          <div className="col-xs-12 col-sm-3">
+          <div className="col-xs-12 col-sm-12 col-md-3">
             <Filters
               filter={this.state.filter}
               taxonomyGroups={this.state.taxonomyGroups}
@@ -102,7 +102,7 @@ export class ProductsApp extends React.PureComponent<{}, IState> {
             />
           </div>
 
-          <div className="col-xs-12 col-sm-9">
+          <div className="col-xs-12 col-sm-12 col-md-9">
             <ProductsListing products={getFilteredProducts(this.state.allProducts, this.state.filter)} />
           </div>
         </div>

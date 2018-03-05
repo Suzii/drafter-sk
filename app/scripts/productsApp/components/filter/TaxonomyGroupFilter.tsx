@@ -16,7 +16,7 @@ export class TaxonomyGroupFilter extends React.PureComponent<IProps, IState> {
   constructor(props) {
     super(props);
 
-    this.state = { isCollapsed: false }
+    this.state = { isCollapsed: window.innerWidth < 768 }
   }
 
   toggleCollapsed = () => {
