@@ -31,22 +31,39 @@ html(lang="en")
         .container
           .row.section__title
             .col-xs-12
-                h1 Kontakty
-          .row.section__content.center-sm
-            .col-xs-12.col-sm-6
-              div
-                p www.drafter.sk
-                p dankovcik@drafter.sk
-                p +412 907 122 336
-            .col-xs-12.col-sm-6
-              div
-                p Príles 604/40
-                p Trenčianska Teplá
-                p 914&nbsp;01
-                p Slovensko
+              h1 Kontakty
+          .row.section__content.around-xs.around-sm.around-md.around-lg.around-xl
+            .col-xs-11.col-sm-8.col-md-5.contact-card
+              ul
+                li
+                  i.fa.fa-fw.fa-address-card
+                  b DRAFTER, s.r.o.
+                li
+                  i.fa.fa-fw.fa-map-marker-alt
+                  | Príles 40, Trenčianska Teplá, 914&nbsp;01
 
-                p ICO: 123131231
-                p DIC: 454353453453
+                li
+                  i.fa.fa-fw.fa-envelope
+                  a(href="mailto:dankovcik@drafter.sk") dankovcik@drafter.sk
+
+                //li
+                //  i.fa.fa-fw.fa-envelope
+                //  a(href="mailto:drafter.sro@gmail.com") drafter.sro@gmail.com
+                li
+                  i.fa.fa-fw.fa-phone
+                  | +412&nbsp;907&nbsp;122&nbsp;336
+
+            //dl.inline-flex
+            //  dd IČO
+            //  dt 36694215
+            //
+            //  dd DIČ
+            //  dt 2022265784
+            //
+            //  dd IČ DPH
+            //  dt SK2022265784
+
+
 
 
   include includes/footer
