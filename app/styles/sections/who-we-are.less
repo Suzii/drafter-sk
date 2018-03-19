@@ -1,0 +1,26 @@
+.who-we-are__features {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.who-we-are__feature {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 20%;
+  align-items: center;
+  text-align: center;
+
+  .fa {
+    font-size: 2rem;
+  }
+
+  @media (max-width: @screen-sm + 1) {
+    flex-basis: 28%;
+  }
+
+  @media (max-width: @screen-xs + 1) {
+    flex-basis: 80%;
+  }
+}
