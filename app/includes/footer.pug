@@ -3,24 +3,26 @@ footer.footer
     .footer__main--sitemap
       ul.sitemap
         li.sitemap__link
-          a(href='/') Domov
+          a(href='#') Domov
         li.sitemap__link
           a(href='#kto-sme') Kto sme
         li.sitemap__link
           a(href='#produkty') Produkty
         li.sitemap__link
           a(href='#kontakt') Kontakt
-
-    .footer__main--logo.hidden-sm
-      img(src="./images/drafter-logo.png")
+    //
+    //.footer__main--logo.hidden-sm.hidden-xs
+    //  img(src="./images/drafter-logo.png")
 
     .footer__main--contact
-      p
-        a(href='mailto:dankovcik@drafter.sk') dankovcik@drafter.sk
-      p
-        a(href='mailto:drafter@gmail.com') drafter@gmail.com
-      p
-        | +412&nbsp;907&nbsp;122&nbsp;336
+      ul
+        li
+          i.fa.fa-fw.fa-envelope
+          a(href='mailto:dankovcik@drafter.sk') dankovcik@drafter.sk
+
+        li
+          i.fa.fa-fw.fa-phone
+          | +412&nbsp;907&nbsp;122&nbsp;336
 
   .footer__copyright
-    | Created by&nbsp;<a href="mailto:z.dankovcikova@gmail.com">@Suzii</a>&nbsp;&copy;<span id="footer__copyright--year">2018</span>
+    | Created by&nbsp;<a href="mailto:z.dankovcikova@gmail.com">Suzii</a>&nbsp;&copy;<span id="footer__copyright--year">2018</span>
