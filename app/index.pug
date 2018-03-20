@@ -44,43 +44,53 @@ html(lang="en")
 
       section#produkty.section.section--gray
 
-      section#kontakt.section
+      section#kontakt.section.section--contact
         .container
           .row.section__title
             .col-xs-12
               h1 Kontakt
-          .row.section__content.around-xs.around-sm.around-md.around-lg.around-xl
-            .col-xs-11.col-sm-8.col-md-5.contact-card
-              ul
-                li
-                  i.fas.fa-fw.fa-address-card
-                  b DRAFTER, s.r.o.
-                li
-                  i.fas.fa-fw.fa-map-marker-alt
-                  | Príles 40, Trenčianska Teplá, 914&nbsp;01
+          .row.section__content--centered
+            .contact-card
+              .contact-card__primary
+                ul
+                  li
+                    i.fas.fa-fw.fa-address-card
+                    b DRAFTER, s.r.o.
+                  li
+                    i.fas.fa-fw.fa-map-marker-alt
+                    | Príles 40, Trenčianska Teplá, 914&nbsp;01
 
-                li
-                  i.fas.fa-fw.fa-envelope
-                  a(href="mailto:dankovcik@drafter.sk") dankovcik@drafter.sk
+                  li
+                    i.fas.fa-fw.fa-envelope
+                    a(href="mailto:dankovcik@drafter.sk") dankovcik@drafter.sk
 
-                //li
-                //  i.fas.fa-fw.fa-envelope
-                //  a(href="mailto:drafter.sro@gmail.com") drafter.sro@gmail.com
-                li
-                  i.fas.fa-fw.fa-phone
-                  | +412&nbsp;907&nbsp;122&nbsp;336
-
-            //dl.inline-flex
-            //  dd IČO
-            //  dt 36694215
-            //
-            //  dd DIČ
-            //  dt 2022265784
-            //
-            //  dd IČ DPH
-            //  dt SK2022265784
+                  //li
+                  //  i.fas.fa-fw.fa-envelope
+                  //  a(href="mailto:drafter.sro@gmail.com") drafter.sro@gmail.com
+                  li
+                    i.fas.fa-fw.fa-phone
+                    | +412&nbsp;907&nbsp;122&nbsp;336
 
 
+              //hr.contact-card__separator
+              //.contact-card__secondary
+              //dl.inline-flex
+              //  dd IČO
+              //  dt 36694215
+              //
+              //  dd DIČ
+              //  dt 2022265784
+              //
+              //  dd IČ DPH
+              //  dt SK2022265784
+
+      section#partneri.section.section--gray
+        .container
+          .row.section__title
+            .col-xs-12
+              h1 Partneri
+          .row.section__content
+            .col-xs-12
 
 
   include includes/footer

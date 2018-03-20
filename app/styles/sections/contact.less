@@ -1,10 +1,52 @@
-.contact-card {
-  background-color: @light-gray;
+.fancy-background(@breakpoint) {
+  background:
+    repeating-linear-gradient(
+      -60deg,
+      transparent,
+      transparent @breakpoint,
+      @primary-color @breakpoint,
+      @primary-color 100 - @breakpoint
+    ),
+    linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url("../../images/contact3.jpg") no-repeat 0 50%,
+    url("../../images/contact3.jpg") no-repeat 100% 50%;
+}
 
-  color: @dark-gray;
+.section--contact {
+  .fancy-background(30%);
+  //background-size: cover;
+
+  @media (max-width: @screen-lg+1) {
+   .fancy-background(25%);
+  }
+
+  @media (max-width: @screen-md+1) {
+    .fancy-background(25%);
+  }
+
+  @media (max-width: @screen-sm+1) {
+    .fancy-background(20%);
+  }
+
+  @media (max-width: @screen-xs+1) {
+    background: @primary-color;
+  }
+}
+
+.section__content--centered {
+  display: flex;
+}
+
+.contact-card {
+  margin-left: auto;
+  margin-right: auto;
+  color: @secondary-color;
 
   a {
-    color: @dark-gray;
+    color: @secondary-color;
   }
 
   i {
@@ -24,4 +66,18 @@
   dd {
     font-weight: bolder;
   }
+}
+
+.contact-card__primary {
+
+}
+
+.contact-card__secondary {
+
+}
+
+.contact-card__separator {
+  border: 0;
+  height: 1px;
+  background: @secondary-color;
 }
