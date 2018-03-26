@@ -100,16 +100,6 @@ const productionConfig = merge([
     ]
   },
   parts.minifyJS(),
-  parts.loadJS({
-    include: PATHS.app,
-    exclude: /node_modules/,
-    options: {
-      cacheDirectory: true,
-      presets: [
-          "react",
-        ]
-      }
-  }),
   parts.extractBundles([
     {
       name: 'vendor',
@@ -157,7 +147,8 @@ const productionConfig = merge([
   parts.setFreeVariable(
     'process.env.NODE_ENV',
     'production'
-  )
+  ),
+  parts.copyPublicFolder(PATHS.build),
 ]);
 
 const developmentConfig = merge([
@@ -181,9 +172,10 @@ const developmentConfig = merge([
 module.exports = env => {
   process.env.BABEL_ENV = env;
 
-  if (env === 'production') {
-    return merge(commonConfig, productionConfig)
-  }
+  const config = (env === 'production')
+    ? merge(commonConfig, productionConfig)
+    : merge(commonConfig, developmentConfig);
 
-  return merge(commonConfig, developmentConfig)
+  console.log(JSON.stringify(config, null, 2));
+  return config;
 };
