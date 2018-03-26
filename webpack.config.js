@@ -27,7 +27,8 @@ const lintJSOptions = {
 
 const PATHS = {
   app: path.join(__dirname, 'app'),
-  build: path.join(__dirname, 'build')
+  build: path.join(__dirname, 'build'),
+  public: path.join(__dirname, '__public__')
 };
 
 const lintStylesOptions = {
@@ -148,7 +149,7 @@ const productionConfig = merge([
     'process.env.NODE_ENV',
     'production'
   ),
-  parts.copyPublicFolder(PATHS.build),
+  parts.copyPublicFolder({ from: PATHS.public, to: PATHS.build }),
 ]);
 
 const developmentConfig = merge([

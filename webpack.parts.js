@@ -307,8 +307,10 @@ exports.page = ({
 });
 
 
-exports.copyPublicFolder = (buildFolder) => {
-  new CopyWebpackPlugin([
-    { from: '__public__', to: buildFolder }
-  ])
-};
+exports.copyPublicFolder = ({ from, to }) => ({
+  plugins: [
+    new CopyWebpackPlugin([
+      { from, to }
+    ]),
+  ]
+});
