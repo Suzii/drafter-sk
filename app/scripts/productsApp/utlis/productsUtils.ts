@@ -26,7 +26,7 @@ const satisfiesGroupCondition = memoize((product: Product, taxonomyGroup: string
 
 const useQuerySearch = (query: string) => query && query.trim().length;
 
-const containsPhrase = (filterPhrase: string, text: string) =>
+const containsPhrase = (filterPhrase: string, text: string | null = '') =>
   filterPhrase
     .toLocaleLowerCase()
     .split(/\s+/)
