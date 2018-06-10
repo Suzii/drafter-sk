@@ -1,29 +1,9 @@
 const path = require('path');
-const glob = require('glob');
-
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const HtmlPlugin = require('html-webpack-plugin');
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
-const StylelintPlugin = require('stylelint-webpack-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanPlugin = require('clean-webpack-plugin');
-
-const parts = require('./webpack.parts');
-
-const lintJSOptions = {
-  emitWarning: true,
-  // Fail only on errors
-  failOnWarning: false,
-  failOnError: true,
-
-  // Toggle autofix
-  fix: true,
-  cache: true,
-
-  formatter: require('eslint-friendly-formatter')
-};
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const PATHS = {
   app: path.join(__dirname, 'app'),
@@ -31,152 +11,114 @@ const PATHS = {
   public: path.join(__dirname, '__public__')
 };
 
-const lintStylesOptions = {
-  context: path.resolve(__dirname, `${PATHS.app}/styles`),
-  syntax: 'less',
-  emitErrors: false
-  // fix: true,
-};
+module.exports = (env, argv) => {
+  const prod = argv.mode === 'production';
+  process.env.NODE_ENV = argv.mode;
 
-const cssPreprocessorLoader = { loader: 'less-loader' };
+  console.log('Prod: ', prod);
 
-const commonConfig = merge([
-  {
+  return {
     context: PATHS.app,
-    resolve: {
-      unsafeCache: true,
-      symlinks: false
-    },
-    entry: `${PATHS.app}/scripts/index.ts`,
+    entry: './scripts/index.ts',
     output: {
       path: PATHS.build,
-      publicPath: parts.publicPath
+      publicPath: '/',
+      chunkFilename: prod ? 'scripts/[name].[chunkhash:8].js' : undefined,
+      filename: prod ? 'scripts/[name].[chunkhash:8].js' : undefined
     },
-    plugins: [
-      new HtmlPlugin({
-        template: './index.pug'
-      }),
-      new FriendlyErrorsPlugin(),
-      new StylelintPlugin(lintStylesOptions)
-    ],
+    devtool: 'source-map',
+    resolve: {
+      extensions: ['.ts', '.tsx', '.js', '.json']
+    },
+
     module: {
-      noParse: /\.min\.js/
-    }
-  },
-  parts.loadPug(),
-  parts.loadJS({
-    include: PATHS.app,
-    exclude: /node_modules/,
-    options: {
-      cacheDirectory: true,
-      presets: [
-        "react",
+      rules: [
+        {
+          test: /\.tsx?$/,
+          loader: 'awesome-typescript-loader'
+        },
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader'
+          }
+        },
+        {
+          test: /\.less$/,
+          use: [
+            prod ? MiniCssExtractPlugin.loader : 'style-loader',
+            {
+              loader: 'css-loader', options: { sourceMap: true }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: () => [require('autoprefixer')]
+              }
+            },
+            {
+              loader: 'less-loader', options: { sourceMap: true }
+            }
+          ]
+        },
+        {
+          test: /\.pug$/,
+          use: ['html-loader', 'pug-html-loader']
+        },
+        {
+          test: /\.(eot|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+          use: {
+            loader: 'file-loader',
+            options: {
+              name: 'fonts/[name].[hash:8].[ext]'
+            }
+          }
+        },
+        {
+          test: /\.(png|jpg|svg)$/,
+          use: {
+            loader: 'url-loader',
+            options: {
+              limit: 15000,
+              name: 'images/[name].[hash:8].[ext]'
+            }
+          }
+        },
       ]
-    }
-  }),
-  parts.loadFonts({
-    include: PATHS.app,
-    options: {
-      name: 'fonts/[name].[hash:8].[ext]'
-    }
-  })
-]);
-
-const productionConfig = merge([
-  {
-    output: {
-      chunkFilename: 'scripts/[name].[chunkhash:8].js',
-      filename: 'scripts/[name].[chunkhash:8].js'
-    },
-    performance: {
-      hints: 'warning', // 'error' or false are valid too
-      maxEntrypointSize: 100000, // in bytes
-      maxAssetSize: 450000 // in bytes
     },
     plugins: [
-      new webpack.HashedModuleIdsPlugin(),
-      new ManifestPlugin(),
-      new BundleAnalyzerPlugin(),
-      new CleanPlugin(PATHS.build)
-    ]
-  },
-  parts.minifyJS(),
-  parts.extractBundles([
-    {
-      name: 'vendor',
-
-      minChunks: ({ resource }) => (
-        resource &&
-        resource.indexOf('node_modules') >= 0 &&
-        resource.match(/\.js$/)
-      )
-
-    },
-    // should be the last definition
-    {
-      name: 'manifest',
-      minChunks: Infinity
-    }
-  ]),
-  parts.extractCSS({
-    include: PATHS.app,
-    use: [parts.autoprefix(), cssPreprocessorLoader]
-  }),
-  parts.purifyCSS({
-    paths: glob.sync(`${PATHS.app}/**/*.+(pug|js)`, { nodir: true }),
-    styleExtensions: ['.css', '.less']
-  }),
-  parts.minifyCSS({
-    options: {
-      discardComments: {
-        removeAll: true
+      new HtmlWebPackPlugin({
+        template: './index.pug',
+      }),
+      new MiniCssExtractPlugin({
+        filename: prod ? 'css/[name].[hash:8].css' : '[name].css',
+        chunkFilename: prod ? 'css/[id].[hash:8].css' : '[id].css',
+      }),
+      //prod
+      new CleanPlugin(PATHS.build),
+      new FriendlyErrorsPlugin(),
+      // prod
+      new CopyWebpackPlugin([
+        {
+          from: PATHS.public,
+          to: PATHS.build
+        }
+      ]),
+    ],
+    devServer: {
+      watchOptions: {
+        ignored: /node_modules/
       },
-      // Run cssnano in safe mode to avoid
-      // potentially unsafe transformations.
-      safe: true
+      publicPath: '/',
+      historyApiFallback: true,
+      stats: 'errors-only',
+      host: process.env.HOST, // Defaults to `localhost`
+      port: process.env.PORT, // Defaults to 8080
+      overlay: {
+        errors: true,
+        warnings: false
+      }
     }
-  }),
-  parts.loadImages({
-    include: PATHS.app,
-    options: {
-      limit: 15000,
-      name: 'images/[name].[hash:8].[ext]'
-    }
-  }),
-  // should go after loading images
-  parts.optimizeImages(),
-  parts.setFreeVariable(
-    'process.env.NODE_ENV',
-    'production'
-  ),
-  parts.copyPublicFolder({ from: PATHS.public, to: PATHS.build }),
-]);
-
-const developmentConfig = merge([
-  {
-    devtool: 'cheap-module-eval-source-map',
-    output: {
-      devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]'
-    },
-    plugins: [
-      new webpack.NamedModulesPlugin()
-    ]
-  },
-  parts.devServer({
-    host: process.env.HOST,
-    port: process.env.PORT
-  }),
-  parts.loadCSS({ include: PATHS.app, use: [cssPreprocessorLoader] }),
-  parts.loadImages({include: PATHS.app})
-]);
-
-module.exports = env => {
-  process.env.BABEL_ENV = env;
-
-  const config = (env === 'production')
-    ? merge(commonConfig, productionConfig)
-    : merge(commonConfig, developmentConfig);
-
-  console.log(JSON.stringify(config, null, 2));
-  return config;
+  };
 };
