@@ -2,6 +2,16 @@
   width: 100%;
   background-color: @primary-color;
   padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: center;
+  align-items: center;
+  justify-content: space-around;
+  min-height: 80px;
+}
+
+.nav__brand {
+  text-decoration: none;
 }
 
 ul.nav__links {
@@ -9,10 +19,8 @@ ul.nav__links {
   flex-direction: row;
   list-style: none;
   padding: 0;
-  margin-right: 2rem;
   justify-items: center;
   align-items: center;
-  height: 3rem;
 
   li {
     margin-right: 0.5rem;
@@ -33,9 +41,5 @@ ul.nav__links {
     .active {
       border-bottom: 0.2rem solid @secondary-color;
     }
-  }
-
-  .nav__link--logo {
-    margin-right: auto;
   }
 }
