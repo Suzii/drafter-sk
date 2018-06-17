@@ -4,8 +4,11 @@ nav.nav
   ul.nav__links(role='navigation')
     li
       a(href='#o-nas').active Kto sme
+    if showProducts
+      li
+        a(href='#produkty') Produkty
     li
-      a(href='#produkty') Produkty
+      a(href='#partneri') Partneri
     li
       a(href='#kontakt') Kontakt
 

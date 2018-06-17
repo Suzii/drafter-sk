@@ -2,8 +2,10 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { ProductsApp } from './ProductsApp';
 
-console.info('Bootstrapping Products app');
-ReactDOM.render(
-  <ProductsApp/>,
-  document.getElementById('produkty')
-);
+const container = document.getElementById('produkty');
+if (!!container) {
+  ReactDOM.render(
+    <ProductsApp />,
+    container
+  );
+}
