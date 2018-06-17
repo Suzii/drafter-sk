@@ -2,11 +2,14 @@ const FtpDeploy = require('ftp-deploy');
 const ftpDeploy = new FtpDeploy();
 
 const config = {
-  username: "vr007700",
+  user: "vr007700",
   host: "ftp.drafter.sk",
   port: 21,
   localRoot: __dirname + "/build",
-  remoteRoot: "/_sub/beta/",
+  remoteRoot: "/_sub/beta/", // beta
+  // remoteRoot: "www_root",
+  include: ['**/*'],
+  exclude: [],
 };
 
 
