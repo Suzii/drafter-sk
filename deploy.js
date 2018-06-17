@@ -6,8 +6,8 @@ const config = {
   host: "ftp.drafter.sk",
   port: 21,
   localRoot: __dirname + "/build",
-  remoteRoot: "/_sub/beta/", // beta
-  // remoteRoot: "www_root",
+  // remoteRoot: "/_sub/beta/", // beta
+  remoteRoot: "www_root",
   include: ['**/*'],
   exclude: [],
 };

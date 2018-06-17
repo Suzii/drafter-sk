@@ -1,3 +1,6 @@
+include includes/mixins/logo-full
+include includes/mixins/logo-small
+
 doctype html
 html(lang="en")
   head
@@ -24,7 +27,7 @@ html(lang="en")
     main.main
       header#intro.hero
         .hero__text
-          img(src='./images/d-yellow.png' alt='Drafter logo').hero__text--logo
+          +logo-small('hero__text--logo')
           h1.hero__text--title Poctivé produkty
           h3.hero__text--subtitle od výrobcov až na vaše pulty
           if showProducts
