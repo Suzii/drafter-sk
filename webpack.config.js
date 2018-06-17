@@ -97,23 +97,25 @@ module.exports = (env, argv) => {
       ]
     },
     plugins: [
+      new FriendlyErrorsPlugin(),
       new HtmlWebPackPlugin({
         template: './index.pug',
       }),
-      new MiniCssExtractPlugin({
-        filename: prod ? 'css/[name].[hash:8].css' : '[name].css',
-        chunkFilename: prod ? 'css/[id].[hash:8].css' : '[id].css',
-      }),
-      //prod
-      new CleanPlugin(PATHS.build),
-      new FriendlyErrorsPlugin(),
-      // prod
-      new CopyWebpackPlugin([
-        {
-          from: PATHS.public,
-          to: PATHS.build
-        }
-      ]),
+      ... prod
+          ? [
+          new MiniCssExtractPlugin({
+            filename: prod ? 'css/[name].[hash:8].css' : '[name].css',
+            chunkFilename: prod ? 'css/[id].[hash:8].css' : '[id].css',
+          }),
+          new CleanPlugin(PATHS.build),
+          new CopyWebpackPlugin([
+            {
+              from: PATHS.public,
+              to: PATHS.build
+            }
+          ]),
+        ]
+          : [],
     ],
     optimization: !prod ? {} : {
       noEmitOnErrors: true,
