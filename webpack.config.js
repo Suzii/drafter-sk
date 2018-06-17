@@ -62,7 +62,17 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.pug$/,
-          use: ['html-loader', 'pug-html-loader']
+          use: [
+            'html-loader',
+            {
+              loader: 'pug-html-loader',
+              options: {
+                data: {
+                  beta: true
+                }
+              }
+            }
+          ],
         },
         {
           test: /\.(eot|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
