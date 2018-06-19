@@ -47,7 +47,7 @@ module.exports = (env, argv) => {
           use: [
             prod ? MiniCssExtractPlugin.loader : 'style-loader',
             {
-              loader: 'css-loader', options: { sourceMap: true }
+              loader: 'css-loader', options: { sourceMap: true, minimize: prod }
             },
             {
               loader: 'postcss-loader',

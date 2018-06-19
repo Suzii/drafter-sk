@@ -28,7 +28,7 @@ html(lang="en")
       header#intro.hero
         .hero__text
           +logo-small('hero__text--logo')
-          h1.hero__text--title Poctivé produkty
+          h1.hero__text--title Farmárske potraviny
           h3.hero__text--subtitle od výrobcov až na vaše pulty
           if showProducts
             a(href='#produkty').hero__text--cta Sortiment
@@ -45,7 +45,7 @@ html(lang="en")
 
               p Z našej ponuky si môžete vybrať výrobky z kravského, ovčieho ako aj z kozieho mlieka od našich výrobcov, šikovných farmárov ale aj od top zahraničných producentov. Okrem mliečnych výrobkov u nás nájdete aj mäsové výrobky spoločnosti Mäsovýroba Hôrka, ktorá vsadila na ich tradičné a poctivé spracovanie. Od roku 2017 dovážame do Slovenskej republiky špičkové produkty od spoločnosti TRGOPPRODUCT z Macedónska pod ich exkluzívnou značkou MAMA´S. Ide o pochutiny ako je Ajvar, Zelený ajvar, Lutenica a ďalšie.
 
-              p Naše portfólio tovaru neustále dopĺňame a vyberáme pre Vás len to najlepšie zo Slovenska a zahraničia. O naše dlhoročné skúsenosti v mliekárenskej výrobe a obchode sa radi podelíme so začínajúcimi výrobcami formou poradenstva.
+              p Náš tovar dodávame do obchodných sietí v Slovenskej republike, Českej republike a v Maďarsku, ako aj do nezávislých sietí, obchodov a špecializovaných predajní. Portfólio tovaru neustále dopĺňame a vyberáme pre Vás len to najlepšie zo Slovenska a zahraničia. O naše dlhoročné skúsenosti v mliekárenskej výrobe a obchode sa radi podelíme so začínajúcimi výrobcami formou poradenstva.
 
               p
                 b Radi Vás privítame do rodiny našich spokojných zákazníkov.
@@ -112,7 +112,7 @@ html(lang="en")
               //  dt SK2022265784
 
       section#partneri.section.section--gray
-        .container
+        .container-fluid
           .row.section__title
             .col-xs-12
               h1 Partneri
@@ -120,15 +120,18 @@ html(lang="en")
             .col-xs-12
               .partners
                 .partners__logo
+                  img(src='./images/partners/milkefekt.png')
+
+                .partners__logo
                   img(src='./images/partners/kluknava.png')
 
                 .partners__logo
                   img(src='./images/partners/horka.png')
 
                 .partners__logo
-                  img(src='./images/partners/milkefekt.png')
+                  img(src='./images/partners/farma-bardy.png')
 
                 .partners__logo
-                  img(src='./images/partners/vat33.png')
+                  img(src='./images/partners/syrove-torty.png')
 
     include includes/footer
