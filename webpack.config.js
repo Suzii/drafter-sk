@@ -68,7 +68,6 @@ module.exports = (env, argv) => {
               loader: 'pug-html-loader',
               options: {
                 data: {
-                  showMoreInfo: false,
                   showProducts: false
                 }
               }

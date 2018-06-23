@@ -34,38 +34,35 @@ html(lang="en")
             a(href='#produkty').hero__text--cta Sortiment
 
 
-      section#kto-sme.section
+      section#kto-sme.section.section--full-height
         .container
           .row.section__title
             .col-xs-12
               h1 Kto sme
-          .row.section__content.center-md
-            .col-xs-12.col-md-10
+          .row.section__content
+            .col-xs-12.col-md-10.col-md-offset-1
               p Spoločnosť DRAFTER,s.r.o. Vám ponúka široký sortiment potravinárskych výrobkov, zameraný hlavne na syrové špeciaity.
 
               p Z našej ponuky si môžete vybrať výrobky z kravského, ovčieho ako aj z kozieho mlieka od našich výrobcov, šikovných farmárov ale aj od top zahraničných producentov. Okrem mliečnych výrobkov u nás nájdete aj mäsové výrobky spoločnosti Mäsovýroba Hôrka, ktorá vsadila na ich tradičné a poctivé spracovanie. Od roku 2017 dovážame do Slovenskej republiky špičkové produkty od spoločnosti TRGOPPRODUCT z Macedónska pod ich exkluzívnou značkou MAMA´S. Ide o pochutiny ako je Ajvar, Zelený ajvar, Lutenica a ďalšie.
 
               p Náš tovar dodávame do obchodných sietí v Slovenskej republike, Českej republike a v Maďarsku, ako aj do nezávislých sietí, obchodov a špecializovaných predajní. Portfólio tovaru neustále dopĺňame a vyberáme pre Vás len to najlepšie zo Slovenska a zahraničia. O naše dlhoročné skúsenosti v mliekárenskej výrobe a obchode sa radi podelíme so začínajúcimi výrobcami formou poradenstva.
 
-              p
-                b Radi Vás privítame do rodiny našich spokojných zákazníkov.
+          .row.who-we-are__features.section__content
+            .who-we-are__feature
+              i.fas.fa-4x.fa-thumbs-up
+              h4 Dlhoročné skúsenosti
 
-          if showMoreInfo
-            .row.who-we-are__features.section__content
-              .who-we-are__feature
-                i.fas.fa-4x.fa-handshake
-                h4 Skúsenosti
-                p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy...
+            .who-we-are__feature
+              i.fas.fa-4x.fa-handshake
+              h4 Férový prístup
 
-              .who-we-are__feature
-                i.fas.fa-4x.fa-truck
-                h4 Doprava
-                p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy...
+            .who-we-are__feature
+              i.fas.fa-4x.fa-users
+              h4 Spokojní zákazníci
 
-              .who-we-are__feature
-                i.fas.fa-4x.fa-comments
-                h4 Poradenstvo
-                p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy...
+          .row.col-xs-12.center-xs
+            p
+              b Radi Vás privítame do rodiny našich spokojných zákazníkov.
 
       if showProducts
         section#produkty.section.section--gray
