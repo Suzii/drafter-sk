@@ -72,41 +72,55 @@ html(lang="en")
           .row.section__title
             .col-xs-12
               h1 Kontakt
-          .row.section__content--centered
-            .contact-card
-              .contact-card__primary
+          .row.section__content--centered.contact
+            .contact__persons
+              .contact__person
                 ul
                   li
                     i.fas.fa-fw.fa-address-card
-                    b DRAFTER, s.r.o.
-                  li
-                    i.fas.fa-fw.fa-map-marker-alt
-                    | Príles 40, Trenčianska Teplá, 914&nbsp;01
+                    b Ing. Juraj Dankovčík
 
                   li
                     i.fas.fa-fw.fa-envelope
                     a(href="mailto:dankovcik@drafter.sk") dankovcik@drafter.sk
 
                   li
-                    i.fas.fa-fw.fa-envelope
-                    a(href="mailto:drafter.sro@gmail.com") drafter.sro@gmail.com
-
-                  li
                     i.fas.fa-fw.fa-phone
                     | +412&nbsp;907&nbsp;122&nbsp;336
 
+              .contact__person
+                ul
+                  li
+                    i.fas.fa-fw.fa-address-card
+                    b Juraj Záhora
 
-              //hr.contact-card__separator
-              //.contact-card__secondary
-              //dl.inline-flex
-              //  dd IČO
-              //  dt 36694215
-              //
-              //  dd DIČ
-              //  dt 2022265784
-              //
-              //  dd IČ DPH
-              //  dt SK2022265784
+                  li
+                    i.fas.fa-fw.fa-envelope
+                    a(href="mailto:zahora@drafter.sk") zahora@drafter.sk
+
+                  li
+                    i.fas.fa-fw.fa-phone
+                    | +412&nbsp;905&nbsp;795&nbsp;641
+
+            div.contact__separator
+              hr
+            .contact__company
+              dl.inline-flex
+                dd Adresa
+                dt DRAFTER, s.r.o.<br/> Príles 40, Trenčianska Teplá, 914&nbsp;01
+
+                dd Email
+                dt
+                  a(href="mailto:drafter.sro@gmail.com") drafter.sro@gmail.com
+
+                dd IČO
+                dt 36694215
+
+                dd DIČ
+                dt 2022265784
+
+                dd IČ DPH
+                dt SK2022265784
 
       section#partneri.section.section--gray
         .container-fluid
